@@ -143,7 +143,7 @@ plt.xlabel('Epoch')
 plt.ylabel('Accuracy')
 plt.ylim([0, 1])
 plt.legend(loc='lower right')
-plt.savefig('results/celeb_acc_plot.png')
+plt.savefig('results/celeb_acc_plot2.png')
 
 # Clear the previous plot
 plt.clf()
@@ -154,7 +154,7 @@ plt.plot(history.epoch,history.history['val_loss'], label = 'val_loss')
 plt.xlabel('Epoch')
 plt.ylabel('Loss')
 plt.legend(loc='upper right')
-plt.savefig('results/celeb_loss_plot.png')
+plt.savefig('results/celeb_loss_plot2.png')
 
 
 print("--------------------------------------\n")
@@ -165,32 +165,6 @@ print("--------------------------------------\n")
 y_pred=model.predict(x_test)
 y_pred_classes = np.argmax(y_pred, axis=1)
 print('classification Report\n', classification_report(y_test,y_pred_classes))
-print("--------------------------------------\n")
-
-print("--------------------------------------\n")
-print("Model Prediction.\n")
-
-def make_prediction(img,model):
-    img=cv2.imread(img)
-    img=Image.fromarray(img)
-    img=img.resize((128,128))
-    img=np.array(img)
-    input_img = np.expand_dims(img, axis=0)
-    res = model.predict(input_img)
-    res = argmax(res,axis = 1)[0]
-    labels = {0:'Roger Federer', 1:'Virat Kohli', 2:'Lionel Messi', 3:'Maria Sharapova', 4:'Serena Williams'}
-    print(labels[res])
-
-
-make_prediction('cropped/lionel_messi/lionel_messi23.png',model)
-print("--------------------------------------\n")
-make_prediction('cropped/roger_federer/roger_federer4.png',model)
-print("--------------------------------------\n")
-make_prediction('cropped/maria_sharapova/maria_sharapova5.png',model)
-print("--------------------------------------\n")
-make_prediction('cropped/serena_williams/serena_williams17.png',model)
-print("--------------------------------------\n")
-make_prediction('cropped/virat_kohli/virat_kohli9.png',model)
 print("--------------------------------------\n")
 
 model.save("celeb-cnn-model.h5")
