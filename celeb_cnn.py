@@ -193,3 +193,4 @@ print("--------------------------------------\n")
 make_prediction('cropped/virat_kohli/virat_kohli9.png',model)
 print("--------------------------------------\n")
 
+model.save("celeb-cnn-model.h5")
