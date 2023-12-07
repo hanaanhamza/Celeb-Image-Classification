@@ -1,1 +1,1 @@
-# Celeb-Image-Classification
+# Celebrity Image Classification using CNN
